@@ -36,7 +36,3 @@ RUN sed -i "s/demo.launch(debug=True, show_api=True, share=args.share)/demo.laun
 
 # Comando di default quando il container viene avviato
 CMD ["python3", "openvoice_app.py" ,"--share"]
-
-#docker build -t myshell-openvoice .
-#docker run --gpus all -it -p 7860:7860 myshell-openvoice
-
