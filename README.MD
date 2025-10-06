@@ -33,3 +33,5 @@ Now you have a Docker container ready to run the OpenVoice application. Access t
 - [Docker Official Website](https://docs.docker.com/get-docker/)
 
 Feel free to explore and adapt this Docker image based on your specific use case and requirements. For more details on OpenAI Whisper and its usage, refer to the official documentation.
+
+[![Buy Me a Coffee](https://www.manzolo.it/img/buymeacoffee.png)](https://www.buymeacoffee.com/manzolo)
