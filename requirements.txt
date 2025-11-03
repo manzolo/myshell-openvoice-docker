@@ -1,0 +1,13 @@
+soundfile
+librosa
+inflect
+jieba
+silero
+gradio==3.50.2
+langid
+faster-whisper
+whisper-timestamped
+unidecode
+eng-to-ipa
+pypinyin
+cn2an
