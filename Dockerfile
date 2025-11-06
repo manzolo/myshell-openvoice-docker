@@ -1,10 +1,11 @@
 FROM ubuntu:22.04
 
-# System deps
+# System deps + build tools
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    sudo python3.9 python3-distutils python3-pip ffmpeg git pkg-config \
+    sudo python3.10 python3.10-distutils python3-pip ffmpeg git pkg-config \
     libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev \
     libswscale-dev libswresample-dev libavfilter-dev aria2 unzip \
+    build-essential python3.10-dev gcc g++ \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip
@@ -16,8 +17,8 @@ WORKDIR /app/openvoice
 # Copy only runtime requirements
 COPY requirements.txt .
 
-# === CRITICAL FIX: Pin Cython + Install normally ===
-RUN pip install --no-cache-dir "cython<3.0.0"
+# === Install build dependencies first ===
+RUN pip install --no-cache-dir "cython<3.0.0" numpy
 RUN pip install --no-cache-dir . --no-build-isolation
 RUN pip install --no-cache-dir -r requirements.txt
 
