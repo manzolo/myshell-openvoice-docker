@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag myshell-openvoice-docker:latest
 
@@ -23,7 +23,7 @@ jobs:
     - name: Wait for the application to start
       run: |
         echo "Waiting for the application to start..."
-        sleep 30
+        sleep 60
 
     - name: Check if the application is responding
       run: curl -f http://localhost:7860

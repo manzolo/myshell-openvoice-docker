@@ -1,5 +1,11 @@
 # OpenVoice Docker Setup
 
+<a href="https://www.buymeacoffee.com/manzolo">
+  <img src=".github/workflows/blue-button.png" alt="Buy Me A Coffee" width="200">
+</a>
+
+![Version](https://img.shields.io/badge/version-2.0-blue)
+
 This Dockerfile provides a convenient way to set up an environment for running OpenVoice, a project by MyShell AI, on an Ubuntu base image. OpenVoice is a tool for voice manipulation and conversion.
 
 ## Prerequisites
@@ -33,7 +39,3 @@ Now you have a Docker container ready to run the OpenVoice application. Access t
 - [Docker Official Website](https://docs.docker.com/get-docker/)
 
 Feel free to explore and adapt this Docker image based on your specific use case and requirements. For more details on OpenAI Whisper and its usage, refer to the official documentation.
-
-<a href="https://www.buymeacoffee.com/manzolo">
-  <img src=".github/workflows/blue-button.png" alt="Buy Me A Coffee" width="200">
-</a>

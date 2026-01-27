@@ -11,3 +11,5 @@ unidecode
 eng-to-ipa
 pypinyin
 cn2an
+pydub
+wavmark
