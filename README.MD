@@ -10,6 +10,8 @@ This project is a **Docker wrapper** for [OpenVoice](https://github.com/myshell-
 
 > **Note:** This repository only packages the upstream OpenVoice application. Any bugs or feature requests related to the OpenVoice application itself should be reported to the [upstream repository](https://github.com/myshell-ai/OpenVoice/issues), not here.
 
+> **Disclaimer:** This project is not affiliated with or endorsed by MyShell AI. It is maintained as a personal hobby project, with no guarantees of support or timely updates.
+
 ## Prerequisites
 
 Before you can use this Docker image, you need to have Docker installed on your system.
