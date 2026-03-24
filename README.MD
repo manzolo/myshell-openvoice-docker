@@ -6,7 +6,9 @@
 
 ![Version](https://img.shields.io/badge/version-2.0-blue)
 
-This Dockerfile provides a convenient way to set up an environment for running OpenVoice, a project by MyShell AI, on an Ubuntu base image. OpenVoice is a tool for voice manipulation and conversion.
+This project is a **Docker wrapper** for [OpenVoice](https://github.com/myshell-ai/OpenVoice) by MyShell AI. It provides a convenient way to run OpenVoice inside a Docker container on an Ubuntu base image, without modifying the upstream application code.
+
+> **Note:** This repository only packages the upstream OpenVoice application. Any bugs or feature requests related to the OpenVoice application itself should be reported to the [upstream repository](https://github.com/myshell-ai/OpenVoice/issues), not here.
 
 ## Prerequisites
 
