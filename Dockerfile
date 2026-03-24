@@ -36,8 +36,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Install MeloTTS (required for OpenVoice V2)
 RUN pip install --no-cache-dir git+https://github.com/myshell-ai/MeloTTS.git
 RUN python -m unidic download
-# Re-pin jinja2 after MeloTTS may have upgraded it (Jinja2>=3.1.4 breaks Gradio 3.x)
-RUN pip install --no-cache-dir "jinja2<3.1.4"
+# Re-pin after MeloTTS may have upgraded these (breaks Gradio 3.x)
+RUN pip install --no-cache-dir "jinja2<3.1.4" "starlette<1.0.0"
 
 # Download V1 checkpoints
 RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M \
