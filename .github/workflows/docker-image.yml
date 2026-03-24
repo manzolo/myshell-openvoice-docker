@@ -25,6 +25,10 @@ jobs:
         echo "Waiting for the application to start..."
         sleep 60
 
+    - name: Show container logs
+      if: always()
+      run: docker logs openvoice-test
+
     - name: Check if the application is responding
       run: curl -f http://localhost:7860
 
