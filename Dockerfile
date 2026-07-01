@@ -4,7 +4,7 @@ FROM ubuntu:24.04
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     sudo software-properties-common ffmpeg git pkg-config \
     libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev \
-    libswscale-dev libswresample-dev libavfilter-dev aria2 unzip \
+    libswscale-dev libswresample-dev libavfilter-dev aria2 unzip git-lfs \
     build-essential gcc g++ \
     && add-apt-repository ppa:deadsnakes/ppa \
     && apt-get update \
@@ -49,11 +49,12 @@ RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M \
  && rm checkpoints_1226.zip
 
 # Download V2 checkpoints
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M \
-    https://myshell-public-repo-host.s3.amazonaws.com/openvoice/checkpoints_v2_0417.zip \
-    -d /app/openvoice -o checkpoints_v2_0417.zip \
- && unzip /app/openvoice/checkpoints_v2_0417.zip -d openvoice/ \
- && rm checkpoints_v2_0417.zip
+# The old S3 zip (checkpoints_v2_0417.zip) was removed upstream, so clone the
+# official HuggingFace repo instead. It provides the same converter/ and
+# base_speakers/ layout expected under checkpoints_v2/.
+RUN git lfs install \
+ && git clone --depth 1 https://huggingface.co/myshell-ai/OpenVoiceV2 /app/openvoice/checkpoints_v2 \
+ && rm -rf /app/openvoice/checkpoints_v2/.git
 
 EXPOSE 7860
 
