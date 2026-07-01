@@ -56,6 +56,17 @@ RUN git lfs install \
  && git clone --depth 1 https://huggingface.co/myshell-ai/OpenVoiceV2 /app/openvoice/checkpoints_v2 \
  && rm -rf /app/openvoice/checkpoints_v2/.git
 
+# Pre-cache the runtime-downloaded models so the first synthesis works offline.
+# 1) silero-vad (used by whisper-timestamped for tone-color extraction): at
+#    runtime torch.hub would fetch it from GitHub and prompt an interactive
+#    "trust this repository?" confirmation, which fails headless with an
+#    EOFError and surfaces as "Get target tone color error". trust_repo=True
+#    caches it and marks it trusted so the runtime load is local/offline.
+# 2) WavMark (watermarking model in ToneColorConverter): otherwise pulled from
+#    HuggingFace on the first conversion.
+RUN python -c "import torch; torch.hub.load(repo_or_dir='snakers4/silero-vad', model='silero_vad', onnx=True, trust_repo=True)" \
+ && python -c "import wavmark; wavmark.load_model()"
+
 EXPOSE 7860
 
 # Fix Gradio bind
